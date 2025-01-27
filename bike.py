@@ -29,6 +29,9 @@ end_date = st.sidebar.date_input("Tanggal Akhir", day_df['dteday'].max())
 start_date = pd.to_datetime(start_date)
 end_date = pd.to_datetime(end_date)
 
+season_mapping = {1: 'Spring', 2:'Summer', 3: 'Fall', 4:'Winter'}
+day_df['season'] = day_df['season'].map(season_mapping)
+
 season_options = day_df['season'].unique()
 selected_season = st.sidebar.multiselect("Pilih Musim", season_options, default=season_options)
 
